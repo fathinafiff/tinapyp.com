@@ -1,11 +1,10 @@
 "use server";
 
 type Video = {
-  id: string;
   title: string;
+  videoId: string;
   url: string;
   thumbnail: string;
-  videoId: string;
 };
 
 export async function fetchLatestVideo(
