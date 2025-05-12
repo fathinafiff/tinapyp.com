@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: unset;
+    font-weight: unset;
+  }
+
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 240 5% 96%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 6% 80%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.2rem;
+
+    --success: 196 52% 74%;
+    --warning: 34 89% 85%;
+    --error: 10 100% 86%;
+  }
+
+  [data-theme='dark'] {
+    --background: 240 21.31% 11.96%;
+    --foreground: 226.15 63.93% 88.04%;
+    --card: 240 21.05% 14.9%;
+    --card-foreground: 226.15 63.93% 88.04%;
+    --popover: 234.29 13.21% 31.18%;
+    --popover-foreground: 226.15 63.93% 88.04%;
+    --primary: 267.41 83.51% 80.98%;
+    --primary-foreground: 240 21.05% 14.9%;
+    --secondary: 232.5 12% 39.22%;
+    --secondary-foreground: 226.15 63.93% 88.04%;
+    --muted: 230.53 18.81% 19.8%;
+    --muted-foreground: 227.65 23.61% 71.76%;
+    --accent: 189.18 71.01% 72.94%;
+    --accent-foreground: 240 21.05% 14.9%;
+    --destructive: 343.27 81.25% 74.9%;
+    --destructive-foreground: 240 21.05% 14.9%;
+    --border: 236.84 16.24% 22.94%;
+    --input: 236.84 16.24% 22.94%;
+    --ring: 267.41 83.51% 80.98%;
+    --chart-1: 267.41 83.51% 80.98%;
+    --chart-2: 189.18 71.01% 72.94%;
+    --chart-3: 115.45 54.1% 76.08%;
+    --chart-4: 22.96 92% 75.49%;
+    --chart-5: 9.6 55.56% 91.18%;
+    --sidebar: 240 22.73% 8.63%;
+    --sidebar-foreground: 226.15 63.93% 88.04%;
+    --sidebar-primary: 267.41 83.51% 80.98%;
+    --sidebar-primary-foreground: 240 21.05% 14.9%;
+    --sidebar-accent: 189.18 71.01% 72.94%;
+    --sidebar-accent-foreground: 240 21.05% 14.9%;
+    --sidebar-border: 234.29 13.21% 31.18%;
+    --sidebar-ring: 267.41 83.51% 80.98%;
+    --font-sans: Montserrat, sans-serif;
+    --font-serif: Georgia, serif;
+    --font-mono: Fira Code, monospace;
+    --radius: 0.35rem;
+
+    --success: 196 100% 14%;
+    --warning: 34 51% 25%;
+    --error: 10 39% 43%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground min-h-[100vh] flex flex-col;
+  }
+}
+
+html {
+  opacity: 0;
+}
+
+html[data-theme='dark'],
+html[data-theme='light'] {
+  opacity: initial;
+}
