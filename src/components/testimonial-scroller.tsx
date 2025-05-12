@@ -1,17 +1,7 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import { Star, Quote, Twitter } from 'lucide-react'
-
-type Review = {
-  id?: number
-  name: string
-  date: string
-  rating: string
-  comment?: string
-  imageUrl?: string
-  platform?: string
-}
+import { Review } from '@/types/Review'
+import TestimonialCard from './ui/testimonial-card'
 
 const reviews: Review[] = [
   {
@@ -63,47 +53,67 @@ const reviews: Review[] = [
 ]
 
 export default function TestimonialScroller() {
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (containerRef.current) {
-        containerRef.current.scrollTop += 1
-        if (containerRef.current.scrollTop >= containerRef.current.scrollHeight / 2) {
-          containerRef.current.scrollTop = 0
-        }
-      }
-    }, 30)
-
-    return () => clearInterval(interval)
-  }, [])
-
   return (
-    <section className="text-primary py-16 px-4">
-      <div className="text-center mb-12">
-        <h2 className="text-2xl font-bold text-left">Review</h2>
-        {/* <p className="text-gray-400 mt-2">
-          Here's what some of our users have to say about Aceternity UI.
-        </p> */}
-      </div>
-      <div className="h-[600px] overflow-hidden relative" ref={containerRef}>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 animate-scroll-duplicate">
-          {[...reviews, ...reviews].map((t, idx) => (
-            <div key={idx} className="bg-background rounded-xl p-6 border transition-colors">
-              <div className="flex items-start gap-3 mb-4">
-                <img
-                  src={t.imageUrl}
-                  alt={t.name}
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div>
-                  <h3 className="font-semibold comment-white">{t.name}</h3>
-                </div>
-                <Twitter className="ml-auto comment-blue-400" size={20} />
-              </div>
-              <p className="whitespace-pre-line w-full flex flex-wrap">{t.comment}</p>
+    <section className="py-16 overflow-hidden">
+      <div className="mx-auto">
+        <h2 className="text-2xl font-bold mb-4 text-primary">What People Are Saying</h2>
+
+        <style jsx global>{`
+          @keyframes scroll {
+            0% {
+              transform: translateY(0);
+            }
+            100% {
+              transform: translateY(-50%);
+            }
+          }
+
+          .infinite-scroll-container:hover .infinite-scroll-content {
+            animation-play-state: paused;
+          }
+        `}</style>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* First column of reviews */}
+          <div className="infinite-scroll-container h-[600px] overflow-hidden relative rounded-xl">
+            <div
+              className="infinite-scroll-content"
+              style={{
+                animation: 'scroll 40s linear infinite',
+                height: 'fit-content',
+              }}
+            >
+              {/* Original reviews */}
+              {reviews.map((review, idx) => (
+                <TestimonialCard key={`col1-${idx}`} review={review} />
+              ))}
+              {/* Duplicate reviews for infinite effect */}
+              {reviews.map((review, idx) => (
+                <TestimonialCard key={`col1-dup-${idx}`} review={review} />
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Second column with reversed and delayed animation */}
+          <div className="infinite-scroll-container h-[600px] overflow-hidden relative rounded-xl">
+            <div
+              className="infinite-scroll-content"
+              style={{
+                animation: 'scroll 45s linear infinite',
+                animationDelay: '-10s',
+                height: 'fit-content',
+              }}
+            >
+              {/* Reversed order for visual variety */}
+              {[...reviews].reverse().map((review, idx) => (
+                <TestimonialCard key={`col2-${idx}`} review={review} />
+              ))}
+              {/* Duplicate reviews for infinite effect */}
+              {[...reviews].reverse().map((review, idx) => (
+                <TestimonialCard key={`col2-dup-${idx}`} review={review} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

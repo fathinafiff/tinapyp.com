@@ -35,13 +35,13 @@ const Home = () => {
 
       {/* Latest Video Section */}
       <div className="my-12">
-        <h2 className="text-2xl font-bold mb-4">Latest Video</h2>
+        <h2 className="text-2xl font-bold mb-4 text-primary">Latest Video</h2>
         <LatestVideo />
       </div>
 
       {/* Explore Our Products Section */}
       <div className="mt-16 text-center">
-        <h2 className="text-xl font-bold mb-4">🚀 Explore Our Products</h2>
+        <h2 className="text-xl font-bold mb-4 text-primary">🚀 Explore Our Products</h2>
         <a href="https://nightcoders.id" target="_blank" className="text-blue-600 font-medium">
           View all apps we’ve built →
         </a>
@@ -49,7 +49,7 @@ const Home = () => {
 
       {/* Featured Posts Section */}
       <div className="my-12">
-        <h2 className="text-2xl font-bold mb-4">Featured Posts</h2>
+        <h2 className="text-2xl font-bold mb-4 text-primary">Featured Posts</h2>
         <FeaturedPosts />
       </div>
 
