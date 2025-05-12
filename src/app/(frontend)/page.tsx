@@ -5,6 +5,7 @@ import LatestVideo from '@/components/latest-video'
 import FeaturedPosts from '@/components/featured-post'
 import NewsletterSignup from '@/components/newsletter-signup'
 import SocialLinks from '@/components/social-link'
+import TestimonialScroller from '@/components/testimonial-scroller'
 
 const Home = () => {
   return (
@@ -54,6 +55,8 @@ const Home = () => {
 
       {/* Newsletter Signup */}
       <NewsletterSignup />
+
+      <TestimonialScroller />
 
       <div className="mt-20 flex justify-center space-x-6 text-gray-500">
         <SocialLinks
