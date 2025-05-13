@@ -71,7 +71,7 @@ export default async function Post({ params: paramsPromise }: Args) {
         </div>
 
         <RichText className="prose lg:prose-lg mx-auto" data={post.content} enableGutter={false} />
-        
+
         {post.relatedPosts && post.relatedPosts.length > 0 && (
           <div className="my-12">
             <h2 className="text-2xl font-bold mb-4 text-primary">Related Posts</h2>
@@ -81,24 +81,6 @@ export default async function Post({ params: paramsPromise }: Args) {
             />
           </div>
         )}
-
-        {/* Newsletter Signup */}
-        <div className="my-12">
-          <NewsletterSignup />
-        </div>
-
-        <div className="mt-12 flex justify-center space-x-6 text-gray-500">
-          <SocialLinks
-            classname="justify-center"
-            instagramLink="https://www.instagram.com/fathinafiff"
-            youtubeLink="https://www.youtube.com/@fathinafiff"
-            tiktokLink="https://www.tiktok.com/@fathinafiff"
-            email="mailto:fathin@nightcoders.id"
-          />
-        </div>
-        <p className="text-center text-sm text-gray-400 mt-4">
-          © 2025 Fathin Afif, All Rights Reserved
-        </p>
       </main>
     </article>
   )
