@@ -3,12 +3,13 @@ import { cn } from '@/utilities/ui'
 import useClickableCard from '@/utilities/useClickableCard'
 import Link from 'next/link'
 import React, { Fragment } from 'react'
+import { Heart, MessageSquare } from 'lucide-react'
 
 import type { Post } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 
-export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title'>
+export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title' | 'publishedAt'>
 
 export const Card: React.FC<{
   alignItems?: 'center'
@@ -21,7 +22,7 @@ export const Card: React.FC<{
   const { card, link } = useClickableCard({})
   const { className, doc, relationTo, showCategories, title: titleFromProps } = props
 
-  const { slug, categories, meta, title } = doc || {}
+  const { slug, categories, meta, title, publishedAt } = doc || {}
   const { description, image: metaImage } = meta || {}
 
   const hasCategories = categories && Array.isArray(categories) && categories.length > 0
@@ -29,55 +30,84 @@ export const Card: React.FC<{
   const sanitizedDescription = description?.replace(/\s/g, ' ') // replace non-breaking space with white space
   const href = `/${relationTo}/${slug}`
 
+  // Format date for display
+  const formattedDate = publishedAt
+    ? new Date(publishedAt).toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+      })
+    : ''
+
+  // Placeholder values for likes and comments
+  const likes = 5
+  const comments = 3
+
   return (
     <article
       className={cn(
-        'border border-border rounded-lg overflow-hidden bg-card hover:cursor-pointer',
+        'border rounded-lg overflow-hidden shadow-sm hover:cursor-pointer flex flex-col h-full',
         className,
       )}
       ref={card.ref}
     >
-      <div className="relative w-full ">
-        {!metaImage && <div className="">No image</div>}
-        {metaImage && typeof metaImage !== 'string' && <Media resource={metaImage} size="33vw" />}
-      </div>
-      <div className="p-4">
-        {showCategories && hasCategories && (
-          <div className="uppercase text-sm mb-4">
-            {showCategories && hasCategories && (
-              <div>
-                {categories?.map((category, index) => {
-                  if (typeof category === 'object') {
-                    const { title: titleFromCategory } = category
-
-                    const categoryTitle = titleFromCategory || 'Untitled category'
-
-                    const isLast = index === categories.length - 1
-
-                    return (
-                      <Fragment key={index}>
-                        {categoryTitle}
-                        {!isLast && <Fragment>, &nbsp;</Fragment>}
-                      </Fragment>
-                    )
-                  }
-
-                  return null
-                })}
+      <div className="p-4 flex flex-col h-full">
+        <div className="relative h-56 bg-white border-b overflow-hidden">
+          {showCategories &&
+            hasCategories &&
+            categories?.[0] &&
+            typeof categories[0] === 'object' && (
+              <div className="absolute top-4 left-4 bg-yellow-500 text-xs font-bold px-2 py-1 rounded z-10">
+                {categories[0].title || 'Uncategorized'}
               </div>
             )}
-          </div>
-        )}
+          {!metaImage && <div className="h-full flex items-center justify-center">No image</div>}
+          {metaImage && typeof metaImage !== 'string' && (
+            <div className="h-full w-full">
+              <Media
+                resource={metaImage}
+                size="100vw"
+                className="object-cover w-full h-full"
+                imgClassName="w-full h-full object-cover"
+              />
+            </div>
+          )}
+        </div>
+
+        {formattedDate && <div className="text-sm text-gray-500 mb-2 mt-2">{formattedDate}</div>}
+
         {titleToUse && (
-          <div className="prose">
-            <h3>
-              <Link className="not-prose" href={href} ref={link.ref}>
-                {titleToUse}
-              </Link>
-            </h3>
-          </div>
+          <h3 className="font-bold text-lg mb-2">
+            <Link href={href} ref={link.ref}>
+              {titleToUse}
+            </Link>
+          </h3>
         )}
-        {description && <div className="mt-2">{description && <p>{sanitizedDescription}</p>}</div>}
+
+        {description && <p className="text-gray-700 text-sm mb-4">{sanitizedDescription}</p>}
+
+        {/* Footer */}
+        <div className="mt-auto flex items-center justify-between pt-4">
+          {/* likes and comments */}
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-1">
+              <Heart size={16} className="text-gray-500" />
+              <span className="text-xs text-gray-500">{likes}</span>
+            </div>
+            <div className="flex items-center space-x-1">
+              <MessageSquare size={16} className="text-gray-500" />
+              <span className="text-xs text-gray-500">{comments}</span>
+            </div>
+          </div>
+
+          {/* author */}
+          <div className="flex items-center">
+            <div className="w-6 h-6 rounded-full bg-yellow-500 flex items-center justify-center text-white text-xs mr-2">
+              F
+            </div>
+            <span className="text-xs text-gray-500">Fathin Afif</span>
+          </div>
+        </div>
       </div>
     </article>
   )
