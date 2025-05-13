@@ -7,6 +7,9 @@ import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
 import React, { cache } from 'react'
 import RichText from '@/components/RichText'
+import Link from 'next/link'
+import SocialLinks from '@/components/social-link'
+import NewsletterSignup from '@/components/newsletter-signup'
 
 import type { Post } from '@/payload-types'
 
@@ -50,7 +53,7 @@ export default async function Post({ params: paramsPromise }: Args) {
   if (!post) return <PayloadRedirects url={url} />
 
   return (
-    <article className="pt-16 pb-16">
+    <article>
       <PageClient />
 
       {/* Allows redirects for valid pages too */}
@@ -60,17 +63,43 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       <PostHero post={post} />
 
-      <div className="flex flex-col items-center gap-4 pt-8">
-        <div className="container">
-          <RichText className="max-w-[48rem] mx-auto" data={post.content} enableGutter={false} />
-          {post.relatedPosts && post.relatedPosts.length > 0 && (
+      <main className="max-w-3xl mx-auto px-4 py-8">
+        <div className="mb-6">
+          <Link href="/posts" className="text-blue-600 font-medium">
+            ← Back to all posts
+          </Link>
+        </div>
+
+        <RichText className="prose lg:prose-lg mx-auto" data={post.content} enableGutter={false} />
+        
+        {post.relatedPosts && post.relatedPosts.length > 0 && (
+          <div className="my-12">
+            <h2 className="text-2xl font-bold mb-4 text-primary">Related Posts</h2>
             <RelatedPosts
-              className="mt-12 max-w-[52rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
+              className="mt-4"
               docs={post.relatedPosts.filter((post) => typeof post === 'object')}
             />
-          )}
+          </div>
+        )}
+
+        {/* Newsletter Signup */}
+        <div className="my-12">
+          <NewsletterSignup />
         </div>
-      </div>
+
+        <div className="mt-12 flex justify-center space-x-6 text-gray-500">
+          <SocialLinks
+            classname="justify-center"
+            instagramLink="https://www.instagram.com/fathinafiff"
+            youtubeLink="https://www.youtube.com/@fathinafiff"
+            tiktokLink="https://www.tiktok.com/@fathinafiff"
+            email="mailto:fathin@nightcoders.id"
+          />
+        </div>
+        <p className="text-center text-sm text-gray-400 mt-4">
+          © 2025 Fathin Afif, All Rights Reserved
+        </p>
+      </main>
     </article>
   )
 }

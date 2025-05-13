@@ -10,6 +10,7 @@ import type { Props as MediaProps } from '../types'
 
 import { cssVariables } from '@/cssVariables'
 import { getClientSideURL } from '@/utilities/getURL'
+import Image from 'next/image'
 
 const { breakpoints } = cssVariables
 
@@ -58,7 +59,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
 
   return (
     <picture className={cn(pictureClassName)}>
-      <NextImage
+      <Image
         alt={alt || ''}
         className={cn(imgClassName)}
         fill={fill}
