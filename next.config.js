@@ -19,6 +19,8 @@ const nextConfig = {
         }
       }),
       new URL('https://placehold.co/**'),
+      new URL('https://storage.googleapis.com/**'),
+      new URL('https://fw-fileupload-id.s3.ap-southeast-1.amazonaws.com/**'),
     ],
   },
   reactStrictMode: true,

@@ -2,7 +2,7 @@
 import { cn } from '@/utilities/ui'
 import useClickableCard from '@/utilities/useClickableCard'
 import Link from 'next/link'
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Heart, MessageSquare } from 'lucide-react'
 
 import type { Post } from '@/payload-types'
@@ -45,10 +45,7 @@ export const Card: React.FC<{
 
   return (
     <article
-      className={cn(
-        'border rounded-lg overflow-hidden shadow-sm hover:cursor-pointer flex flex-col h-full',
-        className,
-      )}
+      className={cn('border rounded-lg overflow-hidden shadow-sm flex flex-col h-full', className)}
       ref={card.ref}
     >
       <div className="p-4 flex flex-col h-full">
@@ -57,7 +54,7 @@ export const Card: React.FC<{
             hasCategories &&
             categories?.[0] &&
             typeof categories[0] === 'object' && (
-              <div className="absolute top-4 left-4 bg-yellow-500 text-xs font-bold px-2 py-1 rounded z-10">
+              <div className="absolute top-4 left-4 bg-yellow-500 text-xs font-bold px-2 py-1 rounded z-10 rounded">
                 {categories[0].title || 'Uncategorized'}
               </div>
             )}

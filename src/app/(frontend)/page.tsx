@@ -33,23 +33,23 @@ const Home = () => {
         }
       />
 
-      {/* Latest Video Section */}
-      <div className="my-12">
-        <h2 className="text-2xl font-bold mb-4 text-primary">Latest Video</h2>
-        <LatestVideo />
-      </div>
-
       {/* Explore Our Products Section */}
       <div className="mt-16 text-center">
-        <h2 className="text-xl font-bold mb-4 text-primary">🚀 Explore Our Products</h2>
+        <h2 className="text-xl font-bold mb-4 text-primary">🚀 Our Products</h2>
         <a href="https://nightcoders.id" target="_blank" className="text-blue-600 font-medium">
           View all apps we’ve built →
         </a>
       </div>
 
-      {/* Featured Posts Section */}
+      {/* Latest Video Section */}
       <div className="my-12">
-        <h2 className="text-2xl font-bold mb-4 text-primary">Featured Posts</h2>
+        <h2 className="text-2xl font-bold mb-4 text-primary">🎥 Latest Video</h2>
+        <LatestVideo />
+      </div>
+
+      {/* Featured Posts Section */}
+      <div className="mt-12 mb-2">
+        <h2 className="text-2xl font-bold mb-4 text-primary">📝 Insights</h2>
         <FeaturedPosts />
       </div>
 
@@ -67,6 +67,13 @@ const Home = () => {
           email="mailto:fathin@nightcoders.id"
         />
       </div>
+
+      <div className="flex justify-center w-full mt-6 space-x-4 text-sm text-gray-600">
+        <Link href="/">Home</Link>
+        <span>|</span>
+        <Link href="/posts">Insights</Link>
+      </div>
+
       <p className="text-center text-sm text-gray-400 mt-4">
         © 2025 Fathin Afif, All Rights Reserved
       </p>

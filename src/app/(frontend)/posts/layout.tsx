@@ -1,6 +1,7 @@
 import NewsletterSignup from '@/components/newsletter-signup'
 import SocialLinks from '@/components/social-link'
 import { Header } from '@/Header/Component'
+import Link from 'next/link'
 import React from 'react'
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -22,6 +23,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             email="mailto:fathin@nightcoders.id"
           />
         </div>
+
+        <div className="flex justify-center w-full mt-6 space-x-4 text-sm text-gray-600">
+          <Link href="/">Home</Link>
+          <span>|</span>
+          <Link href="/posts">Insights</Link>
+        </div>
+
         <p className="text-center text-sm text-gray-400 mt-4">
           © 2025 Fathin Afif, All Rights Reserved
         </p>

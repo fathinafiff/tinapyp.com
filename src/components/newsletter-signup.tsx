@@ -29,7 +29,8 @@ export default function NewsletterSignup() {
   }
 
   return (
-    <div className="w-full py-8 px-4 bg-gray-100 rounded-lg">
+    <div className="w-full mt-8 py-8 px-4 bg-gray-100 rounded-lg">
+      <h2 className="text-xl font-semibold mb-2">📬 Stay Updated</h2>
       <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2">
         <Input
           type="email"
