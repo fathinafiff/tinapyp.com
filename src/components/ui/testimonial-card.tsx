@@ -10,6 +10,8 @@ const TestimonialCard = ({ review }: { review: Review }) => {
           <Image
             src={review.imageAvatarUrl}
             alt={review.name}
+            width={44}
+            height={44}
             className="w-12 h-12 rounded-full object-cover border-2 border-primary/20"
           />
           {/* <div className="absolute -bottom-1 -right-1 bg-background rounded-full p-0.5">
