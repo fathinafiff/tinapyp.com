@@ -738,6 +738,7 @@ export interface Review {
   rating: number;
   imageAvatarUrl: string;
   comment?: string | null;
+  platform?: ('Fastwork' | 'Upwork' | 'Fiverr' | 'Freelancer.com' | 'Other') | null;
   slug?: string | null;
   slugLock?: boolean | null;
   updatedAt: string;
@@ -1306,6 +1307,7 @@ export interface ReviewsSelect<T extends boolean = true> {
   rating?: T;
   imageAvatarUrl?: T;
   comment?: T;
+  platform?: T;
   slug?: T;
   slugLock?: T;
   updatedAt?: T;

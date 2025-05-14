@@ -14,9 +14,18 @@ const TestimonialCard = ({ review }: { review: Review }) => {
             height={44}
             className="w-12 h-12 rounded-full object-cover border-2 border-primary/20"
           />
-          {/* <div className="absolute -bottom-1 -right-1 bg-background rounded-full p-0.5">
-            <Twitter className="text-primary w-4 h-4" />
-          </div> */}
+          <div className="absolute -bottom-1 -right-1 bg-background rounded-full p-0.5">
+            {review.platform === 'Fastwork' && (
+              <Image
+                src={'/fastwork.svg'}
+                alt={review.name}
+                width={24}
+                height={24}
+                className="w-6 h-6 rounded-full object-cover border-2 border-primary/20"
+              />
+            )}
+            {/* <Twitter className="text-primary w-4 h-4" /> */}
+          </div>
         </div>
         <div className="flex-1">
           <h3 className="font-semibold text-foreground truncate">{review.name}</h3>

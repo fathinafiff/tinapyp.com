@@ -37,6 +37,11 @@ export const Reviews: CollectionConfig = {
       name: 'comment',
       type: 'text',
     },
+    {
+      name: 'platform',
+      type: 'select',
+      options: ['Fastwork', 'Upwork', 'Fiverr', 'Freelancer.com', 'Other'],
+    },
     ...slugField(),
   ],
 }
