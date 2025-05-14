@@ -7,6 +7,9 @@ import NewsletterSignup from '@/components/newsletter-signup'
 import SocialLinks from '@/components/social-link'
 import TestimonialScroller from '@/components/testimonial-scroller'
 
+export const dynamic = 'force-static'
+export const revalidate = 14400
+
 const Home = () => {
   return (
     <main className="max-w-3xl mx-auto px-4 py-8">

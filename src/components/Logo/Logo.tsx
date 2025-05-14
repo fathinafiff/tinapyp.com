@@ -1,5 +1,3 @@
-import clsx from 'clsx'
-import Image from 'next/image'
 import React from 'react'
 
 interface Props {
@@ -11,8 +9,8 @@ interface Props {
 export const Logo = (props: Props) => {
   const { loading: loadingFromProps, priority: priorityFromProps, className } = props
 
-  const loading = loadingFromProps || 'lazy'
-  const priority = priorityFromProps || 'low'
+  // const loading = loadingFromProps || 'lazy'
+  // const priority = priorityFromProps || 'low'
 
   return (
     /* eslint-disable @next/next/no-img-element */

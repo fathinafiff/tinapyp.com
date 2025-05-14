@@ -9,8 +9,6 @@ import React from 'react'
 import type { Props as MediaProps } from '../types'
 
 import { cssVariables } from '@/cssVariables'
-import { getClientSideURL } from '@/utilities/getURL'
-import Image from 'next/image'
 
 const { breakpoints } = cssVariables
 

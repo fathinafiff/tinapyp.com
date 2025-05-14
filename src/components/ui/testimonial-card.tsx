@@ -1,12 +1,13 @@
 import { Review } from '@/payload-types'
-import { Quote, Star, Twitter } from 'lucide-react'
+import { Quote, Star } from 'lucide-react'
+import Image from 'next/image'
 
 const TestimonialCard = ({ review }: { review: Review }) => {
   return (
     <div className="p-6 my-3 mx-3 border shadow-lg shadow-primary/10 rounded-xl transition-all duration-300 hover:shadow-md">
       <div className="flex items-center gap-4 mb-4">
         <div className="relative">
-          <img
+          <Image
             src={review.imageAvatarUrl}
             alt={review.name}
             className="w-12 h-12 rounded-full object-cover border-2 border-primary/20"

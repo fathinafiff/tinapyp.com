@@ -8,8 +8,6 @@ import { draftMode } from 'next/headers'
 import React, { cache } from 'react'
 import RichText from '@/components/RichText'
 import Link from 'next/link'
-import SocialLinks from '@/components/social-link'
-import NewsletterSignup from '@/components/newsletter-signup'
 
 import type { Post } from '@/payload-types'
 
