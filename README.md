@@ -1,6 +1,6 @@
 # Fathin Afife - Personal Website
 
-Welcome to the repository for [Fathin Afife's](https://fathinafife.com) personal website. This site showcases my portfolio, blog posts, and professional information.
+Welcome to the repository for [Fathin Afife's](https://fathinafiff.com) personal website. This site showcases my portfolio, blog posts, and professional information.
 
 ## 🚀 Features
 
@@ -32,28 +32,33 @@ Welcome to the repository for [Fathin Afife's](https://fathinafife.com) personal
 ### Getting Started
 
 1. Clone the repository
+
    ```bash
    git clone https://github.com/yourusername/fathin-dev.git
    cd fathin-dev
    ```
 
 2. Install dependencies
+
    ```bash
    pnpm install
    ```
 
 3. Set up environment variables
+
    ```bash
    cp .env.example .env
    ```
+
    Edit `.env` with your configuration values
 
 4. Start the development server
+
    ```bash
    pnpm dev
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+5. Open [http://localhost:3000](http://localhost:3000)
 
 ### Building for Production
 
@@ -83,6 +88,6 @@ pnpm start
 
 If you have questions about this project, feel free to reach out!
 
-- Website: [fathinafife.com](https://fathinafife.com)
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Twitter: [@yourusername](https://twitter.com/yourusername)
+- Website: [fathin.dev](https://fathin.dev)
+- GitHub: [@fathinafiff](github.com/fathinafiff/)
+- Twitter: [@fathinafiff](https://twitter.com/fathinafiff_)
